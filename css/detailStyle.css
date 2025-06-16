@@ -1,0 +1,52 @@
+  body {
+            font-family: 'Nunito', Arial, sans-serif;
+            background: #f8fafc;
+        }
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+        .article-header {
+            background: linear-gradient(90deg, #4e73df 0%, #4e73df 100%);
+            color: #fff;
+            padding: 40px 0 30px 0;
+            margin-bottom: 30px;
+            border-radius: 0 0 1rem 1rem;
+            box-shadow: 0 4px 24px rgba(78,115,223,0.08);
+        }
+        .article-img {
+            max-width: 700px;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 1rem;
+            box-shadow: 0 2px 16px rgba(78,115,223,0.10);
+        }
+        .meta-info {
+            font-size: 0.95rem;
+            color:rgb(226, 229, 231);
+        }
+        .badge-category {
+            background: #36b9cc;
+            color: #fff;
+            font-size: 0.85rem;
+            margin-right: 5px;
+        }
+        .card-article {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+            padding: 2rem 2.5rem;
+        }
+        .btn-back {
+            border-radius: 2rem;
+            padding: 0.5rem 2rem;
+            font-weight: 700;
+        }
+        @media (max-width: 768px) {
+            .card-article {
+                padding: 1rem;
+            }
+            .article-img {
+                max-width: 100%;
+            }
+        }
