@@ -97,36 +97,81 @@ while ($row = mysqli_fetch_assoc($result)) {
             <p class="lead mb-0">Artikel dengan kategori ini</p>
         </div>
     </header>
-
-    <div class="container">
-        <div class="row">
+<div class="container-fluid" style="max-width:1200px;">
+    <div class="row">
+        <!-- Bagian Kiri: Artikel Berdasarkan Kategori -->
+        <div class="col-lg-8 mb-4">
+           
             <?php if (!empty($articles)): ?>
                 <?php foreach ($articles as $article): ?>
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card h-100 shadow border-0 card-animate">
-                            <img src="../img/<?php echo htmlspecialchars($article['picture'] ?: 'default.jpg'); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($article['title']); ?>" style="height:200px;object-fit:cover;">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-primary"><?php echo htmlspecialchars($article['title']); ?></h5>
-                                <p class="card-text mb-1">
-                                    <small class="text-muted">
-                                        <i class="fas fa-calendar-alt"></i> <?php echo htmlspecialchars($article['date']); ?> &nbsp;
-                                        <i class="fas fa-user"></i> <?php echo htmlspecialchars($article['nickname']); ?>
-                                    </small>
-                                </p>
-                                <p class="card-text flex-grow-1"><?php echo mb_substr(strip_tags($article['content']), 0, 120) . '...'; ?></p>
-                                <p class="card-text mb-2"><span class="badge bg-info text-white"><i class="fas fa-tag"></i> <?php echo htmlspecialchars($article['categories']); ?></span></p>
-                                <a href="detail.php?id=<?php echo $article['id']; ?>" class="btn btn-primary mt-auto">Baca Selengkapnya</a>
+                    <div class="card mb-4 shadow-sm border-0">
+                        <?php if (!empty($article['picture'])): ?>
+                            <img src="../img/<?php echo htmlspecialchars($article['picture']); ?>" class="card-img-top" style="max-height:200px;object-fit:cover;" alt="<?php echo htmlspecialchars($article['title']); ?>">
+                        <?php endif; ?>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold"><?php echo htmlspecialchars($article['title']); ?></h5>
+                            <div class="mb-2">
+                                <span class="badge bg-info text-white"><i class="fas fa-tag"></i> <?php echo htmlspecialchars($article['categories']); ?></span>
                             </div>
+                            <div class="mb-2 text-muted small">
+                                <i class="fas fa-calendar-alt"></i> <?php echo htmlspecialchars($article['date']); ?> &nbsp;
+                                <i class="fas fa-user"></i> <?php echo htmlspecialchars($article['nickname']); ?>
+                            </div>
+                            <div class="mb-2"><?php echo mb_substr(strip_tags($article['content']), 0, 150) . '...'; ?></div>
+                            <a href="detail.php?id=<?php echo $article['id']; ?>" class="btn btn-primary btn-sm">Baca Selengkapnya</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <div class="col-12">
-                    <div class="alert alert-info text-center shadow-sm">Tidak ada artikel pada kategori ini.</div>
-                </div>
+                <div class="alert alert-info text-center shadow-sm">Tidak ada artikel pada kategori ini.</div>
             <?php endif; ?>
         </div>
+
+        <!-- Bagian Kanan: Sidebar -->
+        <div class="col-lg-4 mb-4">
+            <!-- Search Sidebar -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white fw-bold">
+                    <i class="fas fa-search"></i> Pencarian
+                </div>
+                <div class="card-body">
+                    <form method="get" action="index.php">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Cari artikel..." name="search" value="<?php echo htmlspecialchars($search ?? ''); ?>">
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Menu Kategori -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white fw-bold">
+                    <i class="fas fa-list"></i> Kategori
+                </div>
+                <ul class="list-group list-group-flush">
+                    <?php foreach ($kategori_nav as $kat): ?>
+                        <li class="list-group-item">
+                            <a href="kategori.php?id=<?php echo $kat['id']; ?>" class="text-decoration-none text-primary">
+                                <?php echo htmlspecialchars($kat['name']); ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <!-- Tentang -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white fw-bold">
+                    <i class="fas fa-info-circle"></i> Tentang
+                </div>
+                <div class="card-body">
+                    <p class="mb-0">
+                        <b>BlogKu</b> adalah platform berbagi artikel menarik setiap hari. Temukan inspirasi, pengetahuan, dan cerita dari berbagai kategori!
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
     <footer class="bg-white mt-5 py-4 shadow-sm">
         <div class="container text-center">
