@@ -3,6 +3,9 @@
 ### NIM   : 230605110088
 ### Kelas : Pemograman WEB - B
 
+link website:
+http://blogku.free.nf/
+
 ## Framework dan Bahasa:
 - Bootstrap
 - PHP
@@ -10,7 +13,10 @@
 - HTML,CSS
 
 ##Fitur-Fitur
+
 ### User
+username : user
+password : user
 - Search untuk judukl artikel dan isi
 - Menampilkan artikel terbaru
 - Membaca detail artikel, dengan menampilkan juga artikel terkait dan search
@@ -21,6 +27,8 @@
 - Menu artikel saya, untuk menampilan daftar artikel yang sudah ditambah berdasarkan login user, didalam menu tersebut terdapat menu untuk mengedit, membaca, menghapus, dan menampilkan status(disetujui,menunggu persetujuan,ditolak) dari artikel
 - logout
 ### Admin
+username : admin 
+password : admin
 - Dashboard menampilkan jumlah author, artikel, dan kategori
 - CRUD artikel, kategori, dan author
 - Assigment dengan aksi setujui, tolak dan baca untuk artikel
